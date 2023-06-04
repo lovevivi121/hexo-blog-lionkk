@@ -18,10 +18,10 @@ type: "about"
 
 
 ## 联系我
-CSDN：<a href="https://chocolate.blog.csdn.net/">https://chocolate.blog.csdn.net/</a>（CSDN认证博客专家）
+CSDN：<a href="https://www.jianshu.com/u/2015c9e00f55">https://www.jianshu.com/u/2015c9e00f55</a>
 
-微信公众号：小狮子前端Vue
+微信号：wxid_byks8q75hwbs22
 
-一个不是只会写业务代码的前端攻城狮会带给你怎样的体会呢？
+没有那把剑，我照样可以歼灭敌军。
 
 座右铭：学如逆水行舟，不进则退

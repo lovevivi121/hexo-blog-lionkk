@@ -33,11 +33,6 @@ requirement3: 网站要有维护，定期或不定期均可，线下朋友请忽
 requirement4: 申请友链在评论区留言即可，但需先添加本站友链（申请格式如下文所述）
 requirement5: 有一定数量的原创文章，建站一周以上（大佬可以无视以上要求）
 requirement6: 如果你想联系我，在About页面中有我的相关联系方式
-myInfo: My Blog Info
-info1: 'name: 超逸の技术博客'
-info2: 'link: https://yangchaoyi.vip/'
-info3: 'avatar: https://cdn.jsdelivr.net/gh/Chocolate1999/cdn/img/avatar.png'
-info4: 'descr: 不是只会写业务代码の前端攻城狮'
 
 # Code Blocks (代碼相關)
 # --------------------------------------
@@ -58,8 +53,8 @@ copy:
 # formal:
 #   icon: link || the description
 social:
-  fab fa-github: https://github.com/xxxxx || Github
-  fas fa-envelope: mailto:xxxxxx@gmail.com || Email
+  fab fa-github: https://github.com/lovevivi121 || Github
+  fas fa-envelope: mailto:lovevivi121@qq.com || Email
 
 # search (搜索)
 # --------------------------------------
@@ -77,7 +72,7 @@ algolia_search:
 
 # Local search
 local_search:
-  enable: false
+  enable: true
   labels:
     input_placeholder: Search for Posts
     hits_empty: "We didn't find any results for the search: ${query}" # if there are no result
@@ -108,7 +103,7 @@ favicon: /img/favicon.png
 
 # Avatar (頭像)
 avatar:
-  img: https://cdn.jsdelivr.net/gh/Chocolate1999/cdn/img/avatar.png
+  img: './img/avatar.jpg'
   effect: false # 頭像會一直轉圈
 
 # the banner image of home page
@@ -277,6 +272,7 @@ comments:
   # Up to two comments system, the first will be shown as default
   # Disqus/Disqusjs/Livere/Gitalk/Valine/Utterances/Facebook Comments
   use:
+    - Livere
   text: true # Display the comment name next to the button
   load_begin: false # The second comment system will auto load when visiting the website
   count: false # Dispaly comment count in top_img
@@ -301,7 +297,7 @@ disqusjs:
 # livere(來必力)
 # https://www.livere.com/
 livere:
-  uid:
+  uid: MTAyMC81ODUyNC8zNDk4Nw==
 
 # gitalk
 # https://github.com/gitalk/gitalk
@@ -390,7 +386,7 @@ gitter:
 # Footer Settings
 # --------------------------------------
 
-since: 2020
+since: 2023
 
 footer_custom_text:
 
@@ -605,7 +601,7 @@ aside:
     description:
   card_announcement:
     enable: true
-    content: blog-lionkkv2.0.0魔改版本，已经足以使用，更多内容教程请访问主站:yangchaoyi.vip，谢谢~<img src="https://cdn.jsdelivr.net/gh/lete114/CDN/Use/my_bg.gif">
+    content: 这里是奇祁的博客空间，也算是个人的一个栖息地，网络中属于自己的一片蓝天
   card_pixiv:
     enable: true
   card_calendar:
