@@ -1,15 +1,5 @@
 ## :sunny:hexo-blog-lionkk
 
-<p align="center"> <a href="https://yangchaoyi.vip" target="_blank" rel="noopener noreferrer"><img width="100" src="https://cdn.jsdelivr.net/gh/Chocolate1999/cdn/img/avatar.png" alt="Blog logo"></a> </p>
-
-<p align="center">
-<img src="https://camo.githubusercontent.com/87301d019d7f5fd66e4186fcf2f7e7a2276fd9f1/68747470733a2f2f7472617669732d63692e636f6d2f736877323031382f736877323031382e6769746875622e696f2e737667" alt="Build Status" data-canonical-src="https://travis-ci.comChocolate1999/hexo-blog-lionkk.svg" style="max-width:100%;">
-<a href="http://hits.dwyl.com/Chocolate1999/hexo-blog-lionkk"><img src="http://hits.dwyl.com/Chocolate1999/hexo-blog-lionkk.svg" alt="HitCount"></a><a href="https://www.gnu.org/licenses/"> <img src="https://img.shields.io/github/license/Chocolate1999/hexo-blog-lionkk.svg" alt="License"></a><a href="https://github.com/Chocolate1999/hexo-blog-lionkk/network"> <img src="https://img.shields.io/github/forks/Chocolate1999/hexo-blog-lionkk.svg" alt="GitHub forks"></a> <a href="https://github.com/Chocolate1999/hexo-blog-lionkk/stargazers"> <img src="https://img.shields.io/github/stars/Chocolate1999/hexo-blog-lionkk.svg" alt="GitHub stars"></a>
-<a href="https://github.com/Chocolate1999/hexo-blog-lionkk/releases"><img alt="Version" src="https://img.shields.io/badge/release-2.0.0-blue"/></a><a href="https://yangchaoyi.vip/"><img alt="Author" src="https://img.shields.io/badge/author-yangchaoyi-blur"/></a>
-<a href="https://hexo.io"><img alt="Hexo" src="https://img.shields.io/badge/hexo-4.0+-0e83c"/></a>
-<a href="https://nodejs.org/"><img alt="node.js" src="https://img.shields.io/badge/node.js-8.0+-blur"/></a>
-</p>
-
 >This is my personal blog repository. <a href="https://yangchaoyi.vip/">https://yangchaoyi.vip/</a> Now,it is open for everyone to download and modify. If it can help you to build your blog or you like the repo, could you give me a star ! Thank you!
 
 目前是已经在做开源的准备了，当然还有一些优化项和功能增加后续在慢慢更新，请小伙伴们关注<a href="https://github.com/Chocolate1999/hexo-blog-lionkk">本仓库</a>，点个star即可，然后记得关注`readme`的动态更新，添加的特性与教程都会与代码同步更新。为了回馈开源，这不是生成后的网页文件，是您可以直接使用的源码，您只需要把博客相关信息换成您自己的就可以部署了，对于新手或者不懂编程的小伙伴来说，简直是福音，极大简化了您构建博客的工作量和复杂度，每个人都可以下载并修改成自己喜欢样式！如果你有修改想法，欢迎PR！最后，我们还是给这个开源小项目取个名字吧，由于本人狮子座（单身，苦笑），而且微信公众号名字也是取名：`小狮子前端Vue`，由于并不是自己开发的主题，起名就不添加`theme`了，那就叫 `hexo-blog-lionkk`。<<<<<<a href="https://github.com/Chocolate1999/hexo-blog-lionkk">源代码下载</a>>>>>>
@@ -25,7 +15,15 @@
  3. 你可以直接`fork`一份源码到你的仓库，`clone`到本地
  4. 在本地博客仓库运行`npm install`命令安装依赖包
  5. 修改配置信息，改成自己的信息
- 6. 运行命令`hexo clean`（清除生成文件），`hexo g`（生成网页）， `hexo s`（本地预览），`hexo d`（部署）
+ 6. 运行命令`hexo clean`（清除生成文件），`hexo g`（生成网页）， `hexo s`（本地预览），预览没有问题后重新`hexo clean`（清除生成文件），`hexo g`（生成网页），`hexo deploy`（部署）
+
+**开发流程：**
+1. 修改公告 在source/_data/butterfly.yml中找到并修改
+2. 添加文章 在source/_posts 下面的对应分类中copy一份文章然后修改内容即可
+3. 添加分类 在source/_posts下面新建一个文件夹（todo）
+4. 添加图片 首先添加到图床中，然后将链接放上去
+5. 上传 先 hexo clean 再 hexo g 再 hexo s 再 hexo d
+6. 运行命令`hexo clean`（清除生成文件），`hexo g`（生成网页）， `hexo s`（本地预览），`hexo d`（部署）
 
 <a href="https://yangchaoyi.vip/posts/520520/">教程：【源码开放】Hexo+Github 博客butterfly 和 matery 主题 搭建完全教程【整理】</a>
 

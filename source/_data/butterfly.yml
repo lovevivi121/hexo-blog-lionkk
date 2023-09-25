@@ -601,7 +601,7 @@ aside:
     description:
   card_announcement:
     enable: true
-    content: 这里是奇祁的博客空间，也算是个人的一个栖息地，网络中属于自己的一片蓝天
+    content: 时间再走，几人依旧。
   card_pixiv:
     enable: true
   card_calendar:
