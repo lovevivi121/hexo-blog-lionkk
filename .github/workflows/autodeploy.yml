@@ -11,7 +11,7 @@ on:
       - published
 
 jobs:
-  checkout:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: 检查分支
@@ -49,8 +49,8 @@ jobs:
 
       - name: 部署到github pages
         run: |
-          git config --global user.name "lovevivi121"
-          git config --global user.email "lovevivi121@qq.com"
+          git config --global user.name "roy"
+          git config --global user.email "1842568012@qq.com"
           git clone https://github.com/lovevivi121/lovevivi121.github.io .deploy_git
           # 此处务必用HTTPS链接。SSH链接可能有权限报错的隐患
           # =====注意.deploy_git前面有个空格=====
