@@ -107,7 +107,7 @@ deploy:
   repository:
     coding: https://nOWKjYZgNA:c69db077e9c777e0f45a83e2ebadbb606b35ad09@e.coding.net/lovevivi121/blog/blog.git
     github: https://github.com/lovevivi121/lovevivi121.github.io.git
-  branch: main
+  branch: master
 
 # bilibili番剧列表配置
 bangumi:
