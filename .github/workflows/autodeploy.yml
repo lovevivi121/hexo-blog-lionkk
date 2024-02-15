@@ -140,14 +140,6 @@ jobs:
           npm install hexo-cli -g
           npm install
           hexo g && hexo d
-#      - name: Install sshpass
-#        run: |
-#          sudo apt-get update
-#          sudo apt-get install -y sshpass
-#
-#      - name: Publish hexo to remote host
-#        run: |
-#          sshpass -p ${{ secrets.SSH_PASSWORD }} rsync -av --delete --exclude=.git .deploy_git/ ${{ secrets.USER_NAME }}@${{ secrets.USER_HOST }}:${{ secrets.WEB_ROOT_DIR }}
       - name: 部署到云服务器
         uses: cross-the-world/scp-pipeline@master
         with:
@@ -155,6 +147,6 @@ jobs:
           user: ${{ secrets.USER_NAME }}
           pass: ${{ secrets.SSH_PASSWORD }}
           connect_timeout: 100s
-          local: './.deploy_git/*'
-          remote: /www/wwwroot/lovevivi.cn
+          local: '.deploy_git/*'
+          remote: www/wwwroot/lovevivi.cn
 
