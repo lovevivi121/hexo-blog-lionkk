@@ -68,39 +68,90 @@
 #          local: './.deploy_git/*'
 #          remote: /www/wwwroot/lovevivi.cn
 
-name: deploying Hexo project to GitHub pages
+#name: deploying Hexo project to GitHub pages
+#on:
+#  push:
+#    branches:
+#      - master # master 分支有 push 行为时就触发这个 action
+#
+#jobs:
+#  build-and-deploy:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@master
+#
+#      - name: 更换npm镜像
+#        run: npm config set registry https://registry.npmmirror.com
+#
+#      - name: Build and Deploy
+#        uses: theme-keep/hexo-deploy-github-pages-action@master
+#        env:
+#          PERSONAL_TOKEN: ${{ secrets.HEXO_KEEP_DEPLOY }}
+#          PUBLISH_REPOSITORY: lovevivi121/lovevivi121.github.io
+#          BRANCH: gh-pages
+#          PUBLISH_DIR: ./public
+#
+#      - name: Deploy to Server
+#        uses: easingthemes/ssh-deploy@main
+#        env:
+#          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+#          ARGS: -rltgoDzvO --delete
+#          SOURCE: ./public/
+#          REMOTE_HOST: ${{ secrets.USER_HOST }}
+#          REMOTE_USER: ${{ secrets.USER_NAME }}
+#          TARGET: /www/wwwroot/lovevivi.cn/
+#          EXCLUDE:
+
+name: Deploy Hexo and Publish to Remote Host
 on:
   push:
     branches:
-      - master # master 分支有 push 行为时就触发这个 action
-
+      - master
+    paths-ignore:
+      - .gitignore
+  # 添加改变量后可手动执行此action
+  workflow_dispatch:
 jobs:
-  build-and-deploy:
+  deploy-hexo-and-publish-to-remote-host:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@master
-
-      - name: 更换npm镜像
-        run: npm config set registry https://registry.npmmirror.com
-
-      - name: Build and Deploy
-        uses: theme-keep/hexo-deploy-github-pages-action@master
-        env:
-          PERSONAL_TOKEN: ${{ secrets.HEXO_KEEP_DEPLOY }}
-          PUBLISH_REPOSITORY: lovevivi121/lovevivi121.github.io
-          BRANCH: gh-pages
-          PUBLISH_DIR: ./public
-
-      - name: Deploy to Server
-        uses: easingthemes/ssh-deploy@main
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-          ARGS: -rltgoDzvO --delete
-          SOURCE: ./public/
-          REMOTE_HOST: ${{ secrets.USER_HOST }}
-          REMOTE_USER: ${{ secrets.USER_NAME }}
-          TARGET: /www/wwwroot/lovevivi.cn/
-          EXCLUDE:
+      - name: Git config
+        # 用于在运行`hexo deploy`命令时的ssh认证
+        run: |
+          sudo timedatectl set-timezone Asia/Shanghai
+          mkdir -m 0700 ~/.ssh
+          echo "${{ secrets.SERVER_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 0400 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          ssh-keyscan ${{ secrets.USER_HOST }} >> ~/.ssh/known_hosts
+          git config --global user.name ${{ secrets.GIT_USERNAME }}
+          git config --global user.email ${{ secrets.GIT_EMAIL }}
+          git config --global init.defaultBranch master
+      - uses: actions/checkout@v3
+      - name: Setup node environment
+        uses: actions/setup-node@v3.4.1
+        with:
+          node-version: latest
+          # npm缓存, 加快下次运行的速度
+          cache: 'npm'
+      - run: npm ci
+      - name: Build and deploy hexo
+        # 此处可添加自定的操作, 如gulp压缩等. (注意, 此工作流的工作环境是ubuntu-latest)
+        run: |
+          npm install hexo-cli -g
+          npm install
+          hexo g && hexo d
+      - name: Start ssh-agent
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.SERVER_SSH_KEY }}
+      - name: Publish hexo to remote host
+        # `rsync`命令实现增量同步, --delete参数表示会删除远程文件夹中本地不存在的文件
+        # -a是复合参数, 可复制本地文件的全部属性至远程, -v会显示具体同步的文件信息
+        # 如果首次运行可添加-n参数, 即-anv, 可显示同步的文件信息但不实际操作
+        # exclude中的文件夹路径是相对于本地同步文件夹而言, 即".deploy_git/.git"
+        run: |
+          rsync -av --delete --exclude=.git .deploy_git/ ${{ secrets.USER_NAME }}@${{ secrets.USER_HOST }}:${{ secrets.WEB_ROOT_DIR }}
 
 
