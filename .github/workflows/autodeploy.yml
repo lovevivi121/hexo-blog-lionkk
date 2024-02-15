@@ -155,10 +155,9 @@ jobs:
           host: ${{ secrets.USER_HOST }}
           username: ${{ secrets.USER_NAME }}
           password: ${{ secrets.SSH_PASSWORD }}
-          script: |
+          run: |
             cd www/wwwroot/lovevivi.cn
             ls
             rm -rf *
-#            ls
 #            cp -r $GITHUB_WORKSPACE/.deploy_git/* .
 
