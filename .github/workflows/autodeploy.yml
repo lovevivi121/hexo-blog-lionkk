@@ -135,7 +135,10 @@ jobs:
           node-version: latest
           # npm缓存, 加快下次运行的速度
           cache: 'npm'
-      - run: npm ci
+      - run: |
+          npm cache clean --force
+          npm config set strict-ssl false
+          npm ci
       - name: Build and deploy hexo
         # 此处可添加自定的操作, 如gulp压缩等. (注意, 此工作流的工作环境是ubuntu-latest)
         run: |
