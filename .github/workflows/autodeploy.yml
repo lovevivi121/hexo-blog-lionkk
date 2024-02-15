@@ -136,7 +136,7 @@ jobs:
           # npm缓存, 加快下次运行的速度
           cache: 'npm'
       - run: |
-#          npm cache clean --force
+          npm cache clean --force
           npm config set strict-ssl false
           npm ci
       - name: Build and deploy hexo
