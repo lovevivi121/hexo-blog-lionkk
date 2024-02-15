@@ -158,5 +158,6 @@ jobs:
           script: |
             cd www/wwwroot/lovevivi.cn
             rm -rf *
+            ls $GITHUB_WORKSPACE
             cp -r $GITHUB_WORKSPACE/.deploy_git/* .
 
