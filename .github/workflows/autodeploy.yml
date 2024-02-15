@@ -140,13 +140,23 @@ jobs:
           npm install hexo-cli -g
           npm install
           hexo g && hexo d
-      - name: 部署到云服务器
-        uses: cross-the-world/scp-pipeline@master
+#      - name: 部署到云服务器
+#        uses: cross-the-world/scp-pipeline@master
+#        with:
+#          host: ${{ secrets.USER_HOST }}
+#          user: ${{ secrets.USER_NAME }}
+#          pass: ${{ secrets.SSH_PASSWORD }}
+#          connect_timeout: 100s
+#          local: '.deploy_git/*'
+#          remote: www/wwwroot/lovevivi.cn
+      - name: Deploy to remote host
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.USER_HOST }}
-          user: ${{ secrets.USER_NAME }}
-          pass: ${{ secrets.SSH_PASSWORD }}
-          connect_timeout: 100s
-          local: '.deploy_git/*'
-          remote: www/wwwroot/lovevivi.cn
+          username: ${{ secrets.USER_NAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          script: |
+            cd www/wwwroot/lovevivi.cn
+            rm -rf *
+            cp -r $GITHUB_WORKSPACE/.deploy_git/* .
 
