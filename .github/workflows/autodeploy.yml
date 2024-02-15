@@ -136,7 +136,7 @@ jobs:
           # npm缓存, 加快下次运行的速度
           cache: 'npm'
       - run: |
-          npm cache clean --force
+#          npm cache clean --force
           npm config set strict-ssl false
           npm ci
       - name: Build and deploy hexo
@@ -145,16 +145,13 @@ jobs:
           npm install hexo-cli -g
           npm install
           hexo g && hexo d
-      - name: Start ssh-agent
-        uses: webfactory/ssh-agent@v0.5.4
-        with:
-          ssh-private-key: ${{ secrets.SERVER_SSH_KEY }}
-      - name: Publish hexo to remote host
-        # `rsync`命令实现增量同步, --delete参数表示会删除远程文件夹中本地不存在的文件
-        # -a是复合参数, 可复制本地文件的全部属性至远程, -v会显示具体同步的文件信息
-        # 如果首次运行可添加-n参数, 即-anv, 可显示同步的文件信息但不实际操作
-        # exclude中的文件夹路径是相对于本地同步文件夹而言, 即".deploy_git/.git"
+      - name: Install sshpass
         run: |
-          rsync -av --delete --exclude=.git .deploy_git/ ${{ secrets.USER_NAME }}@${{ secrets.USER_HOST }}:${{ secrets.WEB_ROOT_DIR }}
+          sudo apt-get update
+          sudo apt-get install -y sshpass
+
+      - name: Publish hexo to remote host
+        run: |
+          sshpass -p ${{ secrets.SSH_PASSWORD }} rsync -av --delete --exclude=.git .deploy_git/ ${{ secrets.USER_NAME }}@${{ secrets.USER_HOST }}:${{ secrets.WEB_ROOT_DIR }}
 
 
