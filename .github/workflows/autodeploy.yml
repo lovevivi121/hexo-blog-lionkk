@@ -39,7 +39,7 @@ jobs:
       - name: 安装依赖
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
-#          git config --global url."https://".insteadOf git://
+          git config --global url."https://".insteadOf git://
           npm install --save
 
       - name: 生成静态文件
