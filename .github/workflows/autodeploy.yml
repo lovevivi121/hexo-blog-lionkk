@@ -68,6 +68,7 @@
 #          local: './.deploy_git/*'
 #          remote: /www/wwwroot/lovevivi.cn
 
+##################################################################################
 #name: deploying Hexo project to GitHub pages
 #on:
 #  push:
@@ -102,7 +103,7 @@
 #          REMOTE_USER: ${{ secrets.USER_NAME }}
 #          TARGET: /www/wwwroot/lovevivi.cn/
 #          EXCLUDE:
-
+#########################################################################################################
 name: Deploy Hexo and Publish to Remote Host
 on:
   push:
@@ -140,33 +141,12 @@ jobs:
           npm install hexo-cli -g
           npm install
           hexo g && hexo d
-#      - name: 部署到云服务器
-#        uses: cross-the-world/scp-pipeline@master
-#        with:
-#          host: ${{ secrets.USER_HOST }}
-#          user: ${{ secrets.USER_NAME }}
-#          pass: ${{ secrets.SSH_PASSWORD }}
-#          connect_timeout: 100s
-#          local: '.deploy_git/*'
-#          remote: www/wwwroot/lovevivi.cn
-      - name: Deploy to remote host
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.USER_HOST }}
-          username: ${{ secrets.USER_NAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          run: |
-            cd www/wwwroot/lovevivi.cn
-            ls
-            rm -rf *
-#            cp -r $GITHUB_WORKSPACE/.deploy_git/* .
-
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
           ARGS: -rltgoDzvO --delete
-          SOURCE: ./public/
+          SOURCE: ./.deploy_git/*
           REMOTE_HOST: USER_HOST
           REMOTE_USER: USER_NAME
           TARGET: /www/wwwroot/lovevivi.cn/
