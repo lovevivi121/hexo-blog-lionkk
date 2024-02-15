@@ -157,7 +157,8 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd www/wwwroot/lovevivi.cn
+            ls
             rm -rf *
-            ls $GITHUB_WORKSPACE
-            cp -r $GITHUB_WORKSPACE/.deploy_git/* .
+#            ls
+#            cp -r $GITHUB_WORKSPACE/.deploy_git/* .
 
