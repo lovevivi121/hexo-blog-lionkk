@@ -120,11 +120,6 @@ jobs:
         # 用于在运行`hexo deploy`命令时的ssh认证
         run: |
           sudo timedatectl set-timezone Asia/Shanghai
-#          mkdir -m 0700 ~/.ssh
-#          echo "${{ secrets.SERVER_SSH_KEY }}" > ~/.ssh/id_rsa
-#          chmod 0400 ~/.ssh/id_rsa
-#          ssh-keyscan github.com >> ~/.ssh/known_hosts
-#          ssh-keyscan ${{ secrets.USER_HOST }} >> ~/.ssh/known_hosts
           git config --global user.name ${{ secrets.GIT_USERNAME }}
           git config --global user.email ${{ secrets.GIT_EMAIL }}
           git config --global init.defaultBranch master
