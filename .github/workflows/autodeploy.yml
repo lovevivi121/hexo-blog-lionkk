@@ -145,10 +145,15 @@ jobs:
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-          ARGS: -rltgoDzvO --delete
+          ARGS: '-avzr --delete'
           SOURCE: ./.deploy_git/*
           REMOTE_HOST: USER_HOST
           REMOTE_USER: USER_NAME
           TARGET: /www/wwwroot/lovevivi.cn/
+          #下面的解决ssh连接未知的问题
+          SCRIPT_BEFORE: |
+            whoami
+          SCRIPT_AFTER: |
+            whoami
           EXCLUDE:
 
