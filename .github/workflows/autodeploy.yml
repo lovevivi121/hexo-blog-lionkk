@@ -82,6 +82,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: Build and Deploy
+        run: npm config set registry https://registry.npmmirror.com
         uses: theme-keep/hexo-deploy-github-pages-action@master
         env:
           PERSONAL_TOKEN: ${{ secrets.HEXO_KEEP_DEPLOY }}
