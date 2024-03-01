@@ -107,7 +107,7 @@ avatar:
   effect: false # 頭像會一直轉圈
 
 # the banner image of home page
-index_img: https://cdn.jsdelivr.net/gh/HCLonely/hclonely.github.io@1.3.9/img/Butterfly/index.webp
+index_img: ./index.webp
 
 # Website Background (設置網站背景)
 # can set it to color or image (可設置圖片 或者 顔色)
