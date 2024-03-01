@@ -146,7 +146,7 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
           ARGS: '-avzr --delete'
-          SOURCE: ./.deploy_git/*
+          SOURCE: ./public/*
           REMOTE_HOST: USER_HOST
           REMOTE_USER: USER_NAME
           TARGET: /www/wwwroot/lovevivi.cn/
