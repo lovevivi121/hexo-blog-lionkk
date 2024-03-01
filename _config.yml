@@ -6,14 +6,14 @@
 title: 奇祁的博客
 subtitle: '路漫漫其修远兮'
 description: '一只不会后端的攻城狮'
-keywords: [c/c++, golang, unity, 后端, 面试]  #网站的关键词
+keywords: [c/c++, golang, unity, 后端, 面试,java]  #网站的关键词
 author: 奇祁
 language: zh-CN
 timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: lovevivi121.github.io
+url: https://lovevivi121.github.io
 root: /
 permalink: posts/:abbrlink/
 permalink_defaults:
