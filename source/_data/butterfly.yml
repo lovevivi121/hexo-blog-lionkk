@@ -107,21 +107,21 @@ avatar:
   effect: false # 頭像會一直轉圈
 
 # the banner image of home page
-index_img: ./index.webp
+index_img: https://pic.imgdb.cn/item/65e21f579f345e8d03894e93.webp
 
 # Website Background (設置網站背景)
 # can set it to color or image (可設置圖片 或者 顔色)
 # The formal of color: '#49B202'
 # The formal of image: url(http://xxxxxx.com/xxx.jpg)
 # White color will be shown as default
-background: url(https://cdn.jsdelivr.net/gh/HCLonely/hclonely.github.io@1.3.9/img/Butterfly/index.webp)
+background: url(https://pic.imgdb.cn/item/65e21f579f345e8d03894e93.webp)
 
 # Show the footer background image (same as top_img)
 footer_bg: false
 
 
 # if the banner of page not setting,it will show the top_img
-default_top_img: https://cdn.jsdelivr.net/gh/HCLonely/hclonely.github.io@1.3.9/img/Butterfly/index.webp
+default_top_img: https://pic.imgdb.cn/item/65e21f579f345e8d03894e93.webp
 
 # the banner image of archive page
 archive_img:
