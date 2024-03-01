@@ -603,11 +603,11 @@ aside:
     enable: true
     content: 时间再走，几人依旧。
   card_pixiv:
-    enable: true
+    enable: false
   card_calendar:
     enable: true
   card_map:
-    enable: true
+    enable: false
   card_recent_post:
     enable: true
     limit: 5 # if set 0 will show all
